@@ -106,7 +106,7 @@ def main():
 
     #train with training data - Round 1
     model = train_model(train_df)
-    predictions = load_predict(model, 'random.txt')
+    predictions = load_predict(model, 'luo_bible.txt')
 
     #Create new training data but combining original + predictions
     new_train_df = new_data(train_df, predictions)
