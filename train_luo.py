@@ -2,7 +2,6 @@ import argparse
 import os                                     # Import numpy.
 import pandas as pd  
 from simpletransformers.ner import NERModel, NERArgs
-import pandas as pd
 import time
 import clearml
 from clearml import Task
