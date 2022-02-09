@@ -129,12 +129,12 @@ if __name__ == "__main__":
     Task.add_requirements("-rrequirements.txt")
     task = Task.init(
     project_name='NER-Capstone',    # project name of at least 3 characters
-    task_name='squad-fine-tuning-' + str(int(time.time())), # task name of at least 3 characters
+    task_name='NER-training' + str(int(time.time())), # task name of at least 3 characters
     task_type="training",
     tags=None,
     reuse_last_task_id=True,
     continue_last_task=False,
-    output_uri="s3://capstone-ner/ner-training",
+    output_uri="s3://capstone-ner/outputs/",
     auto_connect_arg_parser=True,
     auto_connect_frameworks=True,
     auto_resource_monitoring=True,
