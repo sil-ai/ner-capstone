@@ -1,5 +1,5 @@
 clearml==1.1.6
-transformers==4.17.0
+transformers==4.16.0
 simpletransformers==0.63.4
 
 --find-links https://download.pytorch.org/whl/torch_stable.html
