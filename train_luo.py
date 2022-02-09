@@ -1,7 +1,5 @@
 import argparse
-import os
-import requests
-import numpy as np                                      # Import numpy.
+import os                                     # Import numpy.
 import pandas as pd  
 from simpletransformers.ner import NERModel, NERArgs
 import pandas as pd
