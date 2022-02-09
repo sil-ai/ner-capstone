@@ -41,7 +41,6 @@ def train_model(df):
     model_args.labels_list = ["B-LOC", "I-LOC", "B-ORG", "I-ORG", "B-DATE", "B-PER", "I-PER", "I-DATE", "O"]
     model = NERModel(
         "xlmroberta", "xlm-roberta-large", 
-        use_cuda=False,
         args=model_args,
     )
     model.train_model(df)
@@ -62,7 +61,6 @@ def load_best_model():
     model_args.labels_list = ["B-LOC", "I-LOC", "B-ORG", "I-ORG", "B-DATE", "B-PER", "I-PER", "I-DATE", "O"]
     model = NERModel(
         "xlmroberta", "outputs/best_model", 
-        use_cuda=False,
         args=model_args,
     )
     return model
