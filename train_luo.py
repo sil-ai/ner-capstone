@@ -134,7 +134,7 @@ if __name__ == "__main__":
     tags=None,
     reuse_last_task_id=True,
     continue_last_task=False,
-    output_uri="s3://capstone-ner/outputs/",
+    output_uri="s3://capstone-ner/",
     auto_connect_arg_parser=True,
     auto_connect_frameworks=True,
     auto_resource_monitoring=True,
