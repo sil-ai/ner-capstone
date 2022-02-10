@@ -9,7 +9,7 @@ import torch
                                   # Import pandas.
 
 def load_text(fileName):
-    f = open(fileName, 'r')
+    f = open(fileName, 'r', encoding='utf-8')
     text = f.read()
     text = text.split('\n\n')
 
@@ -48,7 +48,7 @@ def train_model(df):
     return model
 
 def load_predict(model, fileName):
-    f = open(fileName, 'r')
+    f = open(fileName, 'r', encoding='utf-8')
     text = f.read()
     text_corpus = text.split('\n')
 
