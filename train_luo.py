@@ -2,7 +2,6 @@ import argparse
 import os                                     
 import pandas as pd  
 import time
-import boto3
 
 from simpletransformers.ner import NERModel, NERArgs
 import clearml
