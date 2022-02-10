@@ -57,15 +57,16 @@ def load_predict(model, fileName):
 
     return predictions
 
-def load_best_model():
+def load_best_model(train_df):
     cuda_available = torch.cuda.is_available()
     model_args = NERArgs(overwrite_output_dir=True)
     model_args.labels_list = ["B-LOC", "I-LOC", "B-ORG", "I-ORG", "B-DATE", "B-PER", "I-PER", "I-DATE", "O"]
     model = NERModel(
-        "xlmroberta", "outputs/best_model",
+        "xlmroberta", "/content/outputs/",
         use_cuda=cuda_available, 
         args=model_args,
     )
+    model.train_model(train_df)
     return model
 
 def new_data(df_train, predictions):
@@ -115,14 +116,14 @@ def main():
     new_train_df = new_data(train_df, predictions)
     
     #Round2
-    model.train_model(new_train_df)
-    predictions = load_predict(model, 'luo_bible.txt')
+    model2 = load_best_model(new_train_df)
+    predictions = load_predict(model2, 'luo_bible.txt')
     new_train_df = new_data(train_df, predictions)
 
-    #Round3
-    model.train_model(new_train_df)
+    
+    
     #Evaluate F1 Score
-    f1_score = evaluate_model(model, test_df)
+    f1_score = evaluate_model(model2, test_df)
     
     f1_score.to_csv(os.path.join(args.outDir, 'NER_results.csv'), index=False, line_terminator='\r\n')
     #df.to_csv(os.path.join(args.outDir, 'gbc_check.csv'), index=False, line_terminator='\r\n')
