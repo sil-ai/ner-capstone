@@ -1,13 +1,13 @@
 import argparse
-import os                                     # Import numpy.
+import os                                     
 import pandas as pd  
-from simpletransformers.ner import NERModel, NERArgs
 import time
+
+from simpletransformers.ner import NERModel, NERArgs
 import clearml
 from clearml import Task
 import torch
-                                  # Import pandas.
-
+                                  
 def load_text(fileName):
     f = open(fileName, 'r', encoding='utf-8')
     text = f.read()
