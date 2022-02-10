@@ -1,5 +1,3 @@
-import pkg_resources
-pkg_resources.require("pandas==`1.2.3")
 import argparse
 import os                                     
 import pandas as pd  
