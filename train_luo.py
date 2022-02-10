@@ -5,6 +5,7 @@ from simpletransformers.ner import NERModel, NERArgs
 import time
 import clearml
 from clearml import Task
+import torch
                                   # Import pandas.
 
 def load_text(fileName):
@@ -34,11 +35,12 @@ def load_text(fileName):
     return df_test
 
 def train_model(df):
+    cuda_available = torch.cuda.is_available()
     model_args = NERArgs()
     model_args.labels_list = ["B-LOC", "I-LOC", "B-ORG", "I-ORG", "B-DATE", "B-PER", "I-PER", "I-DATE", "O"]
     model = NERModel(
         "xlmroberta", "xlm-roberta-large",
-        use_cuda=False, 
+        use_cuda=cuda_available, 
         args=model_args,
     )
     model.train_model(df)
@@ -55,11 +57,12 @@ def load_predict(model, fileName):
     return predictions
 
 def load_best_model():
+    cuda_available = torch.cuda.is_available()
     model_args = NERArgs(overwrite_output_dir=True)
     model_args.labels_list = ["B-LOC", "I-LOC", "B-ORG", "I-ORG", "B-DATE", "B-PER", "I-PER", "I-DATE", "O"]
     model = NERModel(
         "xlmroberta", "outputs/best_model",
-        use_cuda=False, 
+        use_cuda=cuda_available, 
         args=model_args,
     )
     return model
