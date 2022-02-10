@@ -37,7 +37,7 @@ def load_text(fileName):
 
 def train_model(df):
     cuda_available = torch.cuda.is_available()
-    model_args = NERArgs()
+    model_args = NERArgs(overwrite_output_dir=True)
     model_args.labels_list = ["B-LOC", "I-LOC", "B-ORG", "I-ORG", "B-DATE", "B-PER", "I-PER", "I-DATE", "O"]
     model = NERModel(
         "xlmroberta", "xlm-roberta-large",
