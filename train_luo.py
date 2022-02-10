@@ -114,11 +114,14 @@ def main():
     new_train_df = new_data(train_df, predictions)
     
     #Round2
-    best_model = load_best_model()
-    best_model.train_model(new_train_df)
-    
+    model.train_model(new_train_df)
+    predictions = load_predict(model, 'luo_bible.txt')
+    new_train_df = new_data(train_df, predictions)
+
+    #Round3
+    model.train_model(new_train_df)
     #Evaluate F1 Score
-    f1_score = evaluate_model(model2, test_df)
+    f1_score = evaluate_model(model, test_df)
     
     f1_score.to_csv(os.path.join(args.outDir, 'NER_results.csv'), index=False, line_terminator='\r\n')
     #df.to_csv(os.path.join(args.outDir, 'gbc_check.csv'), index=False, line_terminator='\r\n')
